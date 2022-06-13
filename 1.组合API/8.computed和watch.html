@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>computed 和 watch | Vue3Notes</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/Vue3Notes/assets/css/0.styles.d3aabd72.css" as="style"><link rel="preload" href="/Vue3Notes/assets/js/app.3bf45893.js" as="script"><link rel="preload" href="/Vue3Notes/assets/js/2.a1e7fce4.js" as="script"><link rel="preload" href="/Vue3Notes/assets/js/28.6971d28a.js" as="script"><link rel="prefetch" href="/Vue3Notes/assets/js/10.25f5ebd0.js"><link rel="prefetch" href="/Vue3Notes/assets/js/11.d567c830.js"><link rel="prefetch" href="/Vue3Notes/assets/js/12.7a6c2cca.js"><link rel="prefetch" href="/Vue3Notes/assets/js/13.07243107.js"><link rel="prefetch" href="/Vue3Notes/assets/js/14.d90d5278.js"><link rel="prefetch" href="/Vue3Notes/assets/js/15.e73ae32e.js"><link rel="prefetch" href="/Vue3Notes/assets/js/16.9a686cc2.js"><link rel="prefetch" href="/Vue3Notes/assets/js/17.877f50b9.js"><link rel="prefetch" href="/Vue3Notes/assets/js/18.506834de.js"><link rel="prefetch" href="/Vue3Notes/assets/js/19.0c4cce07.js"><link rel="prefetch" href="/Vue3Notes/assets/js/20.bb558b34.js"><link rel="prefetch" href="/Vue3Notes/assets/js/21.9269889c.js"><link rel="prefetch" href="/Vue3Notes/assets/js/22.206c4637.js"><link rel="prefetch" href="/Vue3Notes/assets/js/23.3163dcd4.js"><link rel="prefetch" href="/Vue3Notes/assets/js/24.abaf46d3.js"><link rel="prefetch" href="/Vue3Notes/assets/js/25.f5441ef7.js"><link rel="prefetch" href="/Vue3Notes/assets/js/26.79ef20d2.js"><link rel="prefetch" href="/Vue3Notes/assets/js/27.aa57a989.js"><link rel="prefetch" href="/Vue3Notes/assets/js/29.3c1d69b7.js"><link rel="prefetch" href="/Vue3Notes/assets/js/3.07937fde.js"><link rel="prefetch" href="/Vue3Notes/assets/js/30.1c269d47.js"><link rel="prefetch" href="/Vue3Notes/assets/js/31.5d010c69.js"><link rel="prefetch" href="/Vue3Notes/assets/js/32.78b4669b.js"><link rel="prefetch" href="/Vue3Notes/assets/js/33.ca3afb46.js"><link rel="prefetch" href="/Vue3Notes/assets/js/34.7e555102.js"><link rel="prefetch" href="/Vue3Notes/assets/js/35.d8d8ff8c.js"><link rel="prefetch" href="/Vue3Notes/assets/js/36.48b90859.js"><link rel="prefetch" href="/Vue3Notes/assets/js/4.e3ffd4e9.js"><link rel="prefetch" href="/Vue3Notes/assets/js/5.54ee7982.js"><link rel="prefetch" href="/Vue3Notes/assets/js/6.d70240e2.js"><link rel="prefetch" href="/Vue3Notes/assets/js/7.3a2354f9.js"><link rel="prefetch" href="/Vue3Notes/assets/js/8.cc7043ff.js"><link rel="prefetch" href="/Vue3Notes/assets/js/9.cb0e2d89.js">
+    <link rel="stylesheet" href="/Vue3Notes/assets/css/0.styles.d3aabd72.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Vue3Notes/" class="home-link router-link-active"><!----> <span class="site-name">Vue3Notes</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://github.com/changhengheng/Vue3Notes.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue3Notes
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://github.com/changhengheng/Vue3Notes.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue3Notes
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>0.起步</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Vue3Notes/0.起步/1.认识vue3.html" class="sidebar-link">认识vue3</a></li><li><a href="/Vue3Notes/0.起步/3.项目目录分析.html" class="sidebar-link">项目目录分析</a></li><li><a href="/Vue3Notes/0.起步/4.Vue3的devtools.html" class="sidebar-link">Vue3的devtools</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>1.基础类型</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Vue3Notes/1.组合API/1.setup测试.html" class="sidebar-link">setup测试</a></li><li><a href="/Vue3Notes/1.组合API/2.setup和ref的基本使用.html" class="sidebar-link">setup和ref的基本使用</a></li><li><a href="/Vue3Notes/1.组合API/3.reactive的基本使用.html" class="sidebar-link">reactive的基本使用</a></li><li><a href="/Vue3Notes/1.组合API/4.目标对象和代理对象对比.html" class="sidebar-link">目标对象和代理对象对比</a></li><li><a href="/Vue3Notes/1.组合API/5.vue2和vue3响应式的对比.html" class="sidebar-link">vue2和vue3响应式的对比</a></li><li><a href="/Vue3Notes/1.组合API/6.setup深入.html" class="sidebar-link">setup深入</a></li><li><a href="/Vue3Notes/1.组合API/7.reactive和ref细节.html" class="sidebar-link">reactive和ref细节</a></li><li><a href="/Vue3Notes/1.组合API/8.computed和watch.html" class="active sidebar-link">computed和watch</a></li><li><a href="/Vue3Notes/1.组合API/9.vue2和vue3生命周期对比.html" class="sidebar-link">vue2和vue3生命周期对比</a></li><li><a href="/Vue3Notes/1.组合API/10.自定义hook函数.html" class="sidebar-link">自定义hook函数</a></li><li><a href="/Vue3Notes/1.组合API/11.封装发送ajax请求的hook函数.html" class="sidebar-link">封装发送ajax请求的hook函数</a></li><li><a href="/Vue3Notes/1.组合API/12.toRefs.html" class="sidebar-link">toRefs</a></li><li><a href="/Vue3Notes/1.组合API/13.ref获取元素.html" class="sidebar-link">ref获取元素</a></li><li><a href="/Vue3Notes/1.组合API/14.shallowReactive和shallowRef.html" class="sidebar-link">shallowReactive和shallowRef</a></li><li><a href="/Vue3Notes/1.组合API/15.readonly和shallowReadonly.html" class="sidebar-link">readonly和shallowReadonly</a></li><li><a href="/Vue3Notes/1.组合API/16.toRaw和markRaw.html" class="sidebar-link">toRaw和markRaw</a></li><li><a href="/Vue3Notes/1.组合API/17.toRef.html" class="sidebar-link">toRef</a></li><li><a href="/Vue3Notes/1.组合API/18.customRef.html" class="sidebar-link">customRef</a></li><li><a href="/Vue3Notes/1.组合API/19.provide和inject.html" class="sidebar-link">provide和inject</a></li><li><a href="/Vue3Notes/1.组合API/20.判断响应式数据是怎样创建的.html" class="sidebar-link">判断响应式数据是怎样创建的</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>2.新组件</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Vue3Notes/2.新组件/1.Fragment.html" class="sidebar-link">Fragment</a></li><li><a href="/Vue3Notes/2.新组件/2.Teleport.html" class="sidebar-link">Teleport</a></li><li><a href="/Vue3Notes/2.新组件/3.Suspense.html" class="sidebar-link">Suspense</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>3.案例</span> <!----></p> <!----></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>4.补充</span> <!----></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="computed-和-watch"><a href="#computed-和-watch" class="header-anchor">#</a> computed 和 watch</h1> <ul><li>computed 函数:
+<ul><li>与 computed 配置功能一致</li> <li>只有 getter</li> <li>有 getter 和 setter</li></ul></li> <li>watch 函数
+<ul><li>与 watch 配置功能一致</li> <li>监视指定的一个或多个响应式数据, 一旦数据变化, 就自动执行监视回调</li> <li>默认初始时不执行回调, 但可以通过配置 immediate 为 true, 来指定初始时立即执行第一次</li> <li>通过配置 deep 为 true, 来指定深度监视</li></ul></li> <li>watchEffect 函数
+<ul><li>不用直接指定要监视的数据, 回调函数中使用的哪些响应式数据就监视哪些响应式数据</li> <li>默认初始时就会执行第一次, 从而可以收集需要监视的数据</li> <li>监视数据发生变化时回调</li></ul></li></ul> <p>练习代码：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>h2<span class="token operator">&gt;</span>计算和监视<span class="token operator">&lt;</span><span class="token operator">/</span>h2<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>fieldset<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>legend<span class="token operator">&gt;</span>姓名操作<span class="token operator">&lt;</span><span class="token operator">/</span>legend<span class="token operator">&gt;</span>
+    姓氏：<span class="token operator">&lt;</span>input
+      type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span>
+      placeholder<span class="token operator">=</span><span class="token string">&quot;请输入姓氏&quot;</span>
+      v<span class="token operator">-</span>model<span class="token operator">=</span><span class="token string">&quot;user.firstName&quot;</span>
+    <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>br <span class="token operator">/</span><span class="token operator">&gt;</span>
+    名字：<span class="token operator">&lt;</span>input
+      type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span>
+      placeholder<span class="token operator">=</span><span class="token string">&quot;请输入名字&quot;</span>
+      v<span class="token operator">-</span>model<span class="token operator">=</span><span class="token string">&quot;user.lastName&quot;</span>
+    <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>br <span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>fieldset<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>fieldset<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>legend<span class="token operator">&gt;</span>计算属性和监视的演示<span class="token operator">&lt;</span><span class="token operator">/</span>legend<span class="token operator">&gt;</span>
+    <span class="token comment">// 4. 使用computed的值 姓名：&lt;input</span>
+      type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span>
+      placeholder<span class="token operator">=</span><span class="token string">&quot;显示姓名&quot;</span>
+      v<span class="token operator">-</span>model<span class="token operator">=</span><span class="token string">&quot;fullName1&quot;</span>
+    <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>br <span class="token operator">/</span><span class="token operator">&gt;</span>
+    姓名：<span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span> placeholder<span class="token operator">=</span><span class="token string">&quot;显示姓名&quot;</span> v<span class="token operator">-</span>model<span class="token operator">=</span><span class="token string">&quot;fullName2&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>br <span class="token operator">/</span><span class="token operator">&gt;</span>
+    姓名：<span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span> placeholder<span class="token operator">=</span><span class="token string">&quot;显示姓名&quot;</span> v<span class="token operator">-</span>model<span class="token operator">=</span><span class="token string">&quot;fullName3&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>br <span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>fieldset<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>script lang<span class="token operator">=</span><span class="token string">&quot;ts&quot;</span><span class="token operator">&gt;</span>
+<span class="token comment">// 1. 引入computed函数</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>
+  computed<span class="token punctuation">,</span>
+  defineComponent<span class="token punctuation">,</span>
+  reactive<span class="token punctuation">,</span>
+  watch<span class="token punctuation">,</span>
+  ref<span class="token punctuation">,</span>
+  watchEffect<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">&quot;App&quot;</span><span class="token punctuation">,</span>
+  <span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token literal-property property">firstName</span><span class="token operator">:</span> <span class="token string">&quot;法外狂徒张&quot;</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">lastName</span><span class="token operator">:</span> <span class="token string">&quot;三&quot;</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">haha</span><span class="token operator">:</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">aaa</span><span class="token operator">:</span><span class="token string">&quot;aa&quot;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span> <span class="token punctuation">(</span><span class="token string">&quot;user&quot;</span><span class="token punctuation">,</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 使用计算属性get实现第一个姓名的显示</span>
+    <span class="token comment">// vue3的计算属性</span>
+    <span class="token comment">// 计算属性是一个函数，参数是一个回调函数，表示的是get</span>
+    <span class="token comment">// 2. 调用computed函数，并声明一个变量保存返回值</span>
+    <span class="token keyword">const</span> fullName1 <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> user<span class="token punctuation">.</span>firstName <span class="token operator">+</span> <span class="token string">&quot;_&quot;</span> <span class="token operator">+</span> user<span class="token punctuation">.</span>lastName<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fullName1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// computed属性计算的值是一个ref类型的对象</span>
+    <span class="token comment">/*
+      ComputedRefImpl
+        dep: Set(1) {ReactiveEffect}
+        effect: ReactiveEffect {active: true, deps: Array(2), parent: undefined, fn: ƒ, scheduler: ƒ, …}
+        __v_isReadonly: true
+        __v_isRef: true
+        _cacheable: true
+        _dirty: false
+        _setter: () =&gt; {…}
+        _value: &quot;法外狂徒张_三&quot;
+        value: &quot;法外狂徒张_三&quot;
+    */</span>
+
+    <span class="token comment">// 使用计算属性get和set实现第二个姓名的显示</span>
+    <span class="token comment">// 如果要在计算属性中同时使用get和set，参数需要传入一个对象，对象中写get函数和set函数，set函数的参数是修改后的新值</span>
+    <span class="token keyword">const</span> fullName2 <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> user<span class="token punctuation">.</span>firstName <span class="token operator">+</span> <span class="token string">&quot;_&quot;</span> <span class="token operator">+</span> user<span class="token punctuation">.</span>lastName<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function">set</span><span class="token punctuation">(</span>val<span class="token operator">:</span> string<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// console.log(val, &quot;更新的值&quot;);</span>
+        <span class="token keyword">const</span> names <span class="token operator">=</span> val<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">&quot;_&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        user<span class="token punctuation">.</span>firstName <span class="token operator">=</span> names<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        user<span class="token punctuation">.</span>lastName <span class="token operator">=</span> names<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 监视属性实现第三个姓名的现实</span>
+    <span class="token comment">// 监视属性也是一个函数，函数的参数分别是要监视的数据以及一个回调，回调的默认参数是监视的数据</span>
+    <span class="token comment">// 和vue2一样的，这个回调默认一上来是不执行的，如果想一开始默认就执行一次，可以设置第三个参数。</span>
+    <span class="token comment">// 深度监视（监视多层嵌套的数据）也是在第三个参数里配置的</span>
+
+    <span class="token comment">// watch(user, (val) =&gt; {</span>
+    <span class="token comment">//   console.log(val === user, &quot;监视的数据&quot;);// true</span>
+    <span class="token comment">// });</span>
+    <span class="token keyword">const</span> fullName3 <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">watch</span><span class="token punctuation">(</span>
+      user<span class="token punctuation">,</span>
+      <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> firstName<span class="token punctuation">,</span> lastName <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        fullName3<span class="token punctuation">.</span>value <span class="token operator">=</span> firstName <span class="token operator">+</span> <span class="token string">&quot;_&quot;</span> <span class="token operator">+</span> lastName<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span> <span class="token literal-property property">immediate</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">deep</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// vue3的watchEffect和watch功能一样，只不过会默认执行一次，参数是一个回调</span>
+    <span class="token comment">// watchEffect(()=&gt;{</span>
+    <span class="token comment">//   fullName3.value = user.firstName + '_' + user.lastName;</span>
+    <span class="token comment">// })</span>
+
+    <span class="token comment">// 使用watchEffect监视fullName3的数据，改变firstName和lastName</span>
+    <span class="token function">watchEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> names <span class="token operator">=</span> fullName3<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">&quot;_&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      user<span class="token punctuation">.</span>firstName <span class="token operator">=</span> names<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+      user<span class="token punctuation">.</span>lastName <span class="token operator">=</span> names<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 使用watch监视多个数据</span>
+    <span class="token comment">// 参数一是一个数组，存放所有需要监视的数据</span>
+    <span class="token comment">// watch([user.firstName,user.lastName,fullName3],()=&gt;{</span>
+    <span class="token comment">//   // 前两个数据变化时这里的代码没有执行，fullName3改变时才执行了，因为fullName3是响应式数据</span>
+    <span class="token comment">//   console.log (111);</span>
+    <span class="token comment">// })</span>
+
+    <span class="token comment">// 当我们使用watch监视非响应式数据的时候，需要写成回调的形式（疑问：为什么user的firstName和lastName不是响应式的？）</span>
+    <span class="token comment">// watch([user.firstName, user.lastName, fullName3], () =&gt; {</span>
+    <span class="token comment">//   // 前两个数据变化时这里的代码没有执行，fullName3改变时才执行了，因为fullName3是响应式数据</span>
+    <span class="token comment">//   console.log(111);</span>
+    <span class="token comment">// });</span>
+    <span class="token function">watch</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span>user<span class="token punctuation">.</span>firstName<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span>user<span class="token punctuation">.</span>lastName<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 前两个数据变化时这里的代码没有执行，fullName3改变时才执行了，因为fullName3是响应式数据</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">111</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      user<span class="token punctuation">,</span>
+      <span class="token comment">// 3. 把computed函数的返回值暴露出去，在模板中使用</span>
+      fullName1<span class="token punctuation">,</span>
+      fullName2<span class="token punctuation">,</span>
+      fullName3<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">6/13/2022, 9:48:10 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Vue3Notes/1.组合API/7.reactive和ref细节.html" class="prev">
+        reactive和ref细节
+      </a></span> <span class="next"><a href="/Vue3Notes/1.组合API/9.vue2和vue3生命周期对比.html">
+        vue2和vue3生命周期对比
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/Vue3Notes/assets/js/app.3bf45893.js" defer></script><script src="/Vue3Notes/assets/js/2.a1e7fce4.js" defer></script><script src="/Vue3Notes/assets/js/28.6971d28a.js" defer></script>
+  </body>
+</html>

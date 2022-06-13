@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>setup 深入 | Vue3Notes</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/Vue3Notes/assets/css/0.styles.d3aabd72.css" as="style"><link rel="preload" href="/Vue3Notes/assets/js/app.3bf45893.js" as="script"><link rel="preload" href="/Vue3Notes/assets/js/2.a1e7fce4.js" as="script"><link rel="preload" href="/Vue3Notes/assets/js/26.79ef20d2.js" as="script"><link rel="prefetch" href="/Vue3Notes/assets/js/10.25f5ebd0.js"><link rel="prefetch" href="/Vue3Notes/assets/js/11.d567c830.js"><link rel="prefetch" href="/Vue3Notes/assets/js/12.7a6c2cca.js"><link rel="prefetch" href="/Vue3Notes/assets/js/13.07243107.js"><link rel="prefetch" href="/Vue3Notes/assets/js/14.d90d5278.js"><link rel="prefetch" href="/Vue3Notes/assets/js/15.e73ae32e.js"><link rel="prefetch" href="/Vue3Notes/assets/js/16.9a686cc2.js"><link rel="prefetch" href="/Vue3Notes/assets/js/17.877f50b9.js"><link rel="prefetch" href="/Vue3Notes/assets/js/18.506834de.js"><link rel="prefetch" href="/Vue3Notes/assets/js/19.0c4cce07.js"><link rel="prefetch" href="/Vue3Notes/assets/js/20.bb558b34.js"><link rel="prefetch" href="/Vue3Notes/assets/js/21.9269889c.js"><link rel="prefetch" href="/Vue3Notes/assets/js/22.206c4637.js"><link rel="prefetch" href="/Vue3Notes/assets/js/23.3163dcd4.js"><link rel="prefetch" href="/Vue3Notes/assets/js/24.abaf46d3.js"><link rel="prefetch" href="/Vue3Notes/assets/js/25.f5441ef7.js"><link rel="prefetch" href="/Vue3Notes/assets/js/27.aa57a989.js"><link rel="prefetch" href="/Vue3Notes/assets/js/28.6971d28a.js"><link rel="prefetch" href="/Vue3Notes/assets/js/29.3c1d69b7.js"><link rel="prefetch" href="/Vue3Notes/assets/js/3.07937fde.js"><link rel="prefetch" href="/Vue3Notes/assets/js/30.1c269d47.js"><link rel="prefetch" href="/Vue3Notes/assets/js/31.5d010c69.js"><link rel="prefetch" href="/Vue3Notes/assets/js/32.78b4669b.js"><link rel="prefetch" href="/Vue3Notes/assets/js/33.ca3afb46.js"><link rel="prefetch" href="/Vue3Notes/assets/js/34.7e555102.js"><link rel="prefetch" href="/Vue3Notes/assets/js/35.d8d8ff8c.js"><link rel="prefetch" href="/Vue3Notes/assets/js/36.48b90859.js"><link rel="prefetch" href="/Vue3Notes/assets/js/4.e3ffd4e9.js"><link rel="prefetch" href="/Vue3Notes/assets/js/5.54ee7982.js"><link rel="prefetch" href="/Vue3Notes/assets/js/6.d70240e2.js"><link rel="prefetch" href="/Vue3Notes/assets/js/7.3a2354f9.js"><link rel="prefetch" href="/Vue3Notes/assets/js/8.cc7043ff.js"><link rel="prefetch" href="/Vue3Notes/assets/js/9.cb0e2d89.js">
+    <link rel="stylesheet" href="/Vue3Notes/assets/css/0.styles.d3aabd72.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Vue3Notes/" class="home-link router-link-active"><!----> <span class="site-name">Vue3Notes</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://github.com/changhengheng/Vue3Notes.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue3Notes
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://github.com/changhengheng/Vue3Notes.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue3Notes
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>0.起步</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Vue3Notes/0.起步/1.认识vue3.html" class="sidebar-link">认识vue3</a></li><li><a href="/Vue3Notes/0.起步/3.项目目录分析.html" class="sidebar-link">项目目录分析</a></li><li><a href="/Vue3Notes/0.起步/4.Vue3的devtools.html" class="sidebar-link">Vue3的devtools</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>1.基础类型</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Vue3Notes/1.组合API/1.setup测试.html" class="sidebar-link">setup测试</a></li><li><a href="/Vue3Notes/1.组合API/2.setup和ref的基本使用.html" class="sidebar-link">setup和ref的基本使用</a></li><li><a href="/Vue3Notes/1.组合API/3.reactive的基本使用.html" class="sidebar-link">reactive的基本使用</a></li><li><a href="/Vue3Notes/1.组合API/4.目标对象和代理对象对比.html" class="sidebar-link">目标对象和代理对象对比</a></li><li><a href="/Vue3Notes/1.组合API/5.vue2和vue3响应式的对比.html" class="sidebar-link">vue2和vue3响应式的对比</a></li><li><a href="/Vue3Notes/1.组合API/6.setup深入.html" class="active sidebar-link">setup深入</a></li><li><a href="/Vue3Notes/1.组合API/7.reactive和ref细节.html" class="sidebar-link">reactive和ref细节</a></li><li><a href="/Vue3Notes/1.组合API/8.computed和watch.html" class="sidebar-link">computed和watch</a></li><li><a href="/Vue3Notes/1.组合API/9.vue2和vue3生命周期对比.html" class="sidebar-link">vue2和vue3生命周期对比</a></li><li><a href="/Vue3Notes/1.组合API/10.自定义hook函数.html" class="sidebar-link">自定义hook函数</a></li><li><a href="/Vue3Notes/1.组合API/11.封装发送ajax请求的hook函数.html" class="sidebar-link">封装发送ajax请求的hook函数</a></li><li><a href="/Vue3Notes/1.组合API/12.toRefs.html" class="sidebar-link">toRefs</a></li><li><a href="/Vue3Notes/1.组合API/13.ref获取元素.html" class="sidebar-link">ref获取元素</a></li><li><a href="/Vue3Notes/1.组合API/14.shallowReactive和shallowRef.html" class="sidebar-link">shallowReactive和shallowRef</a></li><li><a href="/Vue3Notes/1.组合API/15.readonly和shallowReadonly.html" class="sidebar-link">readonly和shallowReadonly</a></li><li><a href="/Vue3Notes/1.组合API/16.toRaw和markRaw.html" class="sidebar-link">toRaw和markRaw</a></li><li><a href="/Vue3Notes/1.组合API/17.toRef.html" class="sidebar-link">toRef</a></li><li><a href="/Vue3Notes/1.组合API/18.customRef.html" class="sidebar-link">customRef</a></li><li><a href="/Vue3Notes/1.组合API/19.provide和inject.html" class="sidebar-link">provide和inject</a></li><li><a href="/Vue3Notes/1.组合API/20.判断响应式数据是怎样创建的.html" class="sidebar-link">判断响应式数据是怎样创建的</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>2.新组件</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Vue3Notes/2.新组件/1.Fragment.html" class="sidebar-link">Fragment</a></li><li><a href="/Vue3Notes/2.新组件/2.Teleport.html" class="sidebar-link">Teleport</a></li><li><a href="/Vue3Notes/2.新组件/3.Suspense.html" class="sidebar-link">Suspense</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>3.案例</span> <!----></p> <!----></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>4.补充</span> <!----></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="setup-深入"><a href="#setup-深入" class="header-anchor">#</a> setup 深入</h1> <ul><li><p>setup 执行的时机</p> <ul><li>在 beforeCreate 之前执行（一次）， 此时组件对象还没有创建，也就意味着组件实例对象的 this 根本不能用</li> <li>this 是 undefined， 不能通过 this 来访问 data/computed/methods/props</li> <li>其实所有的 composition API 相关回调函数中也都不可以使用 this</li></ul></li> <li><p>setup 的返回值</p> <ul><li>一般都返回一个对象： 为模板提供数据， 也就是模板中可以直接使用此对象中的所有属性/方法</li> <li>返回对象中的属性会与 data 函数返回对象的属性合并，一起成为组件对象的属性，都可以在 HTML 模板中使用</li> <li>返回对象中的方法会与 methods 中的方法合并成为组件对象的方法，如果有重名， setup 优先</li> <li>组件生命周期钩子可以使用 this 获取到组件实例对象，是一个 Proxy 对象，可以看到合并后的属性和方法</li> <li>注意：
+<ul><li>一般不要混合使用 data 和 setup 和 methods 和 setup，因为 methods 中可以访问 setup 提供的属性和方法， 但在 setup 方法中不能访问 data 和 methods，因为没有 this 获取不到组件实例对象，就拿不到上面的 data 和 methods 的数据</li> <li>setup 不能是一个 async 函数： 因为返回值不再是 return 的对象， 而是 promise， 模板看不到 return 对象中的属性数据（setup 不能添加 async）</li></ul></li></ul></li> <li><p>setup 的参数</p> <ul><li>setup(props， context) / setup(props， {attrs， slots， emit})</li> <li>props： 包含 props 组件间通信声明且传入了的所有属性的对象</li> <li>attrs： 包含没有在 props 组件间通信中声明接收的属性的对象， 相当于 this.$attrs（获取当前组件标签上的所有属性，但是该属性是在props中没有被声明接收的，是一个对象）</li> <li>slots： 包含所有传入的插槽内容的对象， 相当于 this.$slots</li> <li>emit： 用来分发（触发）自定义事件的函数， 相当于 this.$emit</li></ul></li></ul> <p>App.vue</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>App父级组件<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">&gt;</span></span>msg:{{ msg }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>msg += <span class="token punctuation">'</span>===<span class="token punctuation">'</span><span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>更新数据<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>hr</span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Child</span> <span class="token attr-name">:msg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>msg<span class="token punctuation">&quot;</span></span> <span class="token attr-name">msg2</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>真香<span class="token punctuation">&quot;</span></span> <span class="token attr-name">@xxx</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>xxx<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>ts<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> defineComponent<span class="token punctuation">,</span> ref <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token comment">// 引入子级组件Child</span>
+<span class="token keyword">import</span> Child <span class="token keyword">from</span> <span class="token string">'./components/Child.vue'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineComponent</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'App'</span><span class="token punctuation">,</span>
+  <span class="token comment">// 注册组件</span>
+  <span class="token literal-property property">components</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    Child<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 定义一个Ref类型的数据</span>
+    <span class="token keyword">const</span> msg <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">'what are you no sha lei'</span><span class="token punctuation">)</span>
+    <span class="token keyword">function</span> <span class="token function">xxx</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">txt</span><span class="token operator">:</span> string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      msg<span class="token punctuation">.</span>value <span class="token operator">+=</span> txt
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      msg<span class="token punctuation">,</span>
+      xxx<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>Child.vue</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>Child子级组件<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">&gt;</span></span>msg:{{ msg }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- &lt;h3&gt;count:{{ count }}&lt;/h3&gt; --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>emitXxx<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>分发事件<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>ts<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> defineComponent<span class="token punctuation">,</span> ref <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineComponent</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Child'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'msg'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token comment">// setup细节问题:</span>
+  <span class="token comment">// setup是在beforeCreate生命周期回调之前就执行了,而且就执行一次</span>
+  <span class="token comment">// 由此可以推断出:setup在执行的时候,当前的组件还没有创建出来,也就意味着:组件实例对象this根本就不能用</span>
+  <span class="token comment">// this是undefined,说明,就不能通过this再去调用data/computed/methods/props中的相关内容了</span>
+  <span class="token comment">// 其实所有的composition API相关回调函数中也都不可以</span>
+
+  <span class="token comment">// setup中的返回值是一个对象,内部的属性和方法是给html模版使用的</span>
+  <span class="token comment">// setup中的对象内部的属性和data函数中的return对象的属性都可以在html模版中使用</span>
+  <span class="token comment">// setup中的对象中的属性和data函数中的对象中的属性会合并为组件对象的属性</span>
+  <span class="token comment">// setup中的对象中的方法和methods对象中的方法会合并为组件对象的方法</span>
+  <span class="token comment">// 在Vue3中尽量不要混合的使用data和setup及methods和setup</span>
+  <span class="token comment">// 一般不要混合使用: methods中可以访问setup提供的属性和方法, 但在setup方法中不能访问data和methods</span>
+  <span class="token comment">// setup不能是一个async函数: 因为返回值不再是return的对象, 而是promise, 模板看不到return对象中的属性数据</span>
+  <span class="token comment">// beforeCreate() {</span>
+  <span class="token comment">//   console.log('beforeCreate执行了')</span>
+  <span class="token comment">// },</span>
+  <span class="token comment">// 界面渲染完毕</span>
+  <span class="token comment">// mounted() {},</span>
+
+  <span class="token comment">// setup(props,context) {</span>
+  <span class="token function">setup</span><span class="token punctuation">(</span><span class="token parameter">props<span class="token punctuation">,</span> <span class="token punctuation">{</span> attrs<span class="token punctuation">,</span> slots<span class="token punctuation">,</span> emit <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// props参数,是一个对象,里面有父级组件向子级组件传递的数据,并且是在子级组件中使用props接收到的所有的属性</span>
+    <span class="token comment">// 包含props配置声明且传入了的所有属性的对象</span>
+    <span class="token comment">// console.log(props.msg)</span>
+    <span class="token comment">// console.log(context.attrs)</span>
+    <span class="token comment">// console.log(context.emit)</span>
+    <span class="token comment">// context参数,是一个对象,里面有attrs对象(获取当前组件标签上的所有的属性的对象,但是该属性是在props中没有声明接收的所有的尚需经的对象),emit方法(分发事件的),slots对象(插槽)</span>
+    <span class="token comment">// 包含没有在props配置中声明的属性的对象, 相当于 this.$attrs</span>
+    <span class="token comment">// console.log(context.attrs.msg2)</span>
+    <span class="token comment">// console.log('=============')</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'setup执行了'</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">const</span> <span class="token function-variable function">showMsg1</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'setup中的showMsg1方法'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 按钮的点击事件的回调函数</span>
+    <span class="token keyword">function</span> <span class="token function">emitXxx</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// context.emit('xxx','++')</span>
+      <span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'xxx'</span><span class="token punctuation">,</span> <span class="token string">'++'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      showMsg1<span class="token punctuation">,</span>
+      emitXxx<span class="token punctuation">,</span>
+      <span class="token comment">// setup中一般都是返回一个对象,对象中的属性和方法都可以在html模版中直接使用</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// data() {</span>
+  <span class="token comment">//   return {</span>
+  <span class="token comment">//     count: 10,</span>
+  <span class="token comment">//   }</span>
+  <span class="token comment">// },</span>
+  <span class="token comment">// // 界面渲染后的生命周期回调</span>
+  <span class="token comment">// mounted() {</span>
+  <span class="token comment">//   console.log(this)</span>
+  <span class="token comment">// },</span>
+  <span class="token comment">// // 方法的</span>
+  <span class="token comment">// methods: {</span>
+  <span class="token comment">//   showMsg2() {</span>
+  <span class="token comment">//     console.log('methods中的showMsg方法')</span>
+  <span class="token comment">//   },</span>
+  <span class="token comment">// },</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">6/13/2022, 9:48:10 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Vue3Notes/1.组合API/5.vue2和vue3响应式的对比.html" class="prev">
+        vue2和vue3响应式的对比
+      </a></span> <span class="next"><a href="/Vue3Notes/1.组合API/7.reactive和ref细节.html">
+        reactive和ref细节
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/Vue3Notes/assets/js/app.3bf45893.js" defer></script><script src="/Vue3Notes/assets/js/2.a1e7fce4.js" defer></script><script src="/Vue3Notes/assets/js/26.79ef20d2.js" defer></script>
+  </body>
+</html>
